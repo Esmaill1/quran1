@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اذاعة القرآن الكريم - البث المباشر</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="gradient-overlay"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <!-- Additional mobile shapes -->
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="player-card">
+            <div class="station-info">
+                <h1 class="station-name">اذاعة القرآن الكريم</h1>
+                <p class="current-time">{{ current_time }}</p>
+                <!-- Mobile subtitle -->
+                <p class="mobile-subtitle">البث المباشر للقرآن الكريم</p>
+            </div>
+            
+            <div class="player-controls">
+                <button id="playPauseBtn" class="play-pause-btn">
+                    <div class="btn-inner">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Audio Visualizer -->
+            <div class="visualizer-wrapper">
+                <canvas id="visualizer"></canvas>
+            </div>
+
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span class="status-text">جاهز للبث</span>
+            </div>
+            
+            <!-- Mobile footer info -->
+            <div class="mobile-footer">
+                <div class="footer-item">
+                    <span class="footer-icon">🕌</span>
+                    <span class="footer-text">بث مباشر</span>
+                </div>
+                <div class="footer-item">
+                    <span class="footer-icon">📖</span>
+                    <span class="footer-text">القرآن الكريم</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Footer -->
+    <div class="credits-footer">
+        <div class="credits-content">
+            <span class="credits-text">تم التطوير بواسطة</span>
+            <a href="https://github.com/Esmaill1" target="_blank" class="credits-link">
+                <span class="developer-name">Esmail</span>
+                <span class="github-icon">🐙</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="audioPlayer" preload="none">
+        <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
+        متصفحك لا يدعم عنصر الصوت.
+    </audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

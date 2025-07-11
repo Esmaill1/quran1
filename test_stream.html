@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .loading { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Radio Stream Test</h1>
+        <p>Testing stream: <strong>https://stream.radiojar.com/8s5u5tpdtwzuv</strong></p>
+        
+        <button onclick="testStream()">Test Stream</button>
+        <button onclick="stopStream()">Stop</button>
+        
+        <div id="status"></div>
+        
+        <audio id="testAudio" preload="none">
+            <source src="https://stream.radiojar.com/8s5u5tpdtwzuv" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        const audio = document.getElementById('testAudio');
+        const status = document.getElementById('status');
+        
+        function updateStatus(message, type) {
+            status.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+        
+        function testStream() {
+            updateStatus('Testing stream...', 'loading');
+            
+            audio.addEventListener('loadstart', () => {
+                updateStatus('Loading stream...', 'loading');
+            });
+            
+            audio.addEventListener('canplay', () => {
+                updateStatus('Stream ready to play!', 'success');
+            });
+            
+            audio.addEventListener('play', () => {
+                updateStatus('Stream is playing!', 'success');
+            });
+            
+            audio.addEventListener('error', (e) => {
+                updateStatus(`Error: ${e.message || 'Failed to load stream'}`, 'error');
+            });
+            
+            audio.addEventListener('waiting', () => {
+                updateStatus('Buffering...', 'loading');
+            });
+            
+            audio.addEventListener('playing', () => {
+                updateStatus('Stream playing successfully!', 'success');
+            });
+            
+            audio.play().catch(error => {
+                updateStatus(`Play failed: ${error.message}`, 'error');
+            });
+        }
+        
+        function stopStream() {
+            audio.pause();
+            updateStatus('Stream stopped', 'success');
+        }
+    </script>
+</body>
+</html> 
