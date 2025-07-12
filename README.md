@@ -1,10 +1,10 @@
-# Relax Radio - Calming Stream Player
+# quran kareem Radio -  Stream Player
 
-A beautiful, calming radio streaming website built with Flask, featuring smooth animations and a relaxing design.
+live quran radio streaming website built with Flask, featuring smooth animations and a relaxing design.
 
 ## Features
 
-- 🎵 Streams relaxing radio from https://stream.radiojar.com/8s5u5tpdtwzuv
+- 🎵 Streams radio from https://stream.radiojar.com/8s5u5tpdtwzuv
 - 🎨 Beautiful animated background with floating shapes
 - 📱 Fully responsive and mobile-friendly
 - ⏰ Real-time clock display
@@ -114,4 +114,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-Enjoy your relaxing radio experience! 🎧✨ 
+Enjoy your quran radio experience! 🎧✨ 
