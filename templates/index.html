@@ -29,6 +29,7 @@
         <div class="player-card">
             <div class="station-info">
                 <h1 class="station-name">اذاعة القرآن الكريم</h1>
+                <p >الوقت الحالي</p>
                 <p class="current-time">{{ current_time }}</p>
                 <!-- Mobile subtitle -->
                 <p class="mobile-subtitle">البث المباشر للقرآن الكريم</p>
@@ -77,7 +78,10 @@
             <span class="credits-text">تم التطوير بواسطة</span>
             <a href="https://github.com/Esmaill1" target="_blank" class="credits-link">
                 <span class="developer-name">Esmail</span>
-                <span class="github-icon">🐙</span>
+              <span class="github-icon">
+                  <img src="{{ url_for('static', filename='icons/icons8-github-30.png') }}" alt="GitHub" width="24" height="24">
+              </span>
+
             </a>
         </div>
     </div>
